@@ -85,4 +85,15 @@ router.put('/room/join/:passcode', (req, res) => {
     })
 })
 
+router.delete('/room/delete/:passcode', (req, res) => {
+    // delete room with passcode from url
+    db.Room.deleteOne({ passcode: req.params.passcode }, (err, data) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.json(data)
+        }
+    })
+})
+
 module.exports = router;
